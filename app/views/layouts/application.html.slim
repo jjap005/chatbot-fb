@@ -1,0 +1,21 @@
+doctype html
+html lang="#{I18n.default_locale}"
+  head
+    title #{t('app.title',title: @title)}
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    = render "layouts/partials/menu"
+
+    main
+      section.py-5.text-center.container
+        .row.py-lg-5
+          .col-lg-6.col-md-8.mx-auto
+            = yield
+
+    = render "layouts/partials/footer"

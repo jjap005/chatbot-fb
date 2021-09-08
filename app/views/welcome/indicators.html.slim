@@ -1,0 +1,28 @@
+h1.fw-light =t('indicators.title')
+p.my-5.lead.text-muted =t('indicators.description')
+
+.container.d-flex.flex-wrap.justify-content-between
+  .section
+    p #{t('indicators.api.version_html')}:
+    p #{@indicators['version']}
+  .section
+    p #{t('indicators.api.autor_html')}:
+    p #{@indicators['autor']}
+  .section
+    p #{t('indicators.api.date_html')}:
+    p #{@indicators['fecha'].split('.')[0]}
+
+.container.d-flex.flex-wrap.justify-content-between
+  table.table.table-stripe
+    thead
+      th #{t('indicators.table.name')}
+      th #{t('indicators.table.code')}
+      th #{t('indicators.table.value')}
+    tbody
+      - indicators = %w[uf ivp dolar dolar_intercambio euro ipc utm imacec tpm libra_cobre tasa_desempleo bitcoin]
+      - indicators.each do |indicator|
+        tr
+          td #{@indicators[indicator]['nombre']}
+          td
+            a href="#{indicator_path(@indicators[indicator]['codigo'])}"  #{@indicators[indicator]['codigo']}
+          td #{@indicators[indicator]['valor']}

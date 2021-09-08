@@ -1,0 +1,16 @@
+nav.navbar.navbar-dark.bg-dark aria-label="First navbar example"
+  .container-fluid
+    a.navbar-brand href="#{root_path}" =t('app.name')
+    button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenuMain" aria-controls="navbarsMenuMain" aria-expanded="true" aria-label="Toggle navigation"
+      span.navbar-toggler-icon
+
+    .navbar-collapse.collapse#navbarsMenuMain
+      ul.navbar-nav.me-auto.mb-2
+        li.nav-item
+          a.nav-link.active aria-current="page" href="#{root_path}" =t('menu.user')
+
+        li.nav-item
+          a.nav-link href="#{root_path}" =t('menu.chatbot')
+
+        li.nav-item
+          a.nav-link href="#{indicators_path}" =t('menu.kpis')

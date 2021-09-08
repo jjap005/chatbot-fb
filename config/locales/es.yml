@@ -1,0 +1,27 @@
+es:
+  app:
+    description: Aplicación para prueba técnica, donde utilizaremos ChatBot, manejo de clientes (usuarios), inicios de sesion y consultas a api externa para obtener datos de indicadores economicos
+    home: Inicio
+    name: ChatBot App
+    title: "%{title} | ChatBot App"
+
+  footer:
+    msg: "© %{year}, desarrollado por Junior Aguilar"
+    github_profile: https://github.com/jjap005
+
+  indicator:
+    no_exist: el indicador solicitado no se encuentra disponible o no existe
+    request: "Se ha solicitado la consulta del indicador: %{indicator}"
+
+  indicators:
+    api:
+      autor_html: "<b>Datos consultados en:</b>"
+      date_html: "<b> Fecha de actulización: </b>"
+      version_html: "<b>Version del api: </b>"
+    description: Este es un servicio open source (web service) que entrega los principales indicadores económicos para Chile. La aplicación mapea constantemente el sitio del Banco Central de Chile
+    title: Indicadores Económicos
+
+  menu:
+    chatbot: Area de ChatBot
+    user: Area clientes
+    kpis: Indicadores Economicos
