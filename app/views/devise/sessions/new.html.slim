@@ -1,5 +1,5 @@
 - @title = t('users.login.title')
-.container
+.container.col-md-6
   h1.text-center = @title
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     - if devise_error_messages! != ""

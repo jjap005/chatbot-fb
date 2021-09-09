@@ -46,18 +46,11 @@ es:
     name: ChatBot App
     title: "%{title} | ChatBot App"
 
-  errors:
-    messages:
-      already_confirmed: ya ha sido confirmado, por favor intente iniciar sesión.
-      confirmation_period_expired: "necesita ser confirmado en %{period}, por favor vuelva a solicitarla."
-      expired: ha expirado, por favor vuelva a solicitarla.
-      errors: errores
-      not_found: no se ha encontrado.
-      not_locked: no estaba bloqueado.
-      not_saved:
-        one: "1 error impidió que este %{resource} fuese guardado:"
-        other: "%{count} errores impidieron que este %{resource} fuese guardado:"
-
+  customers:
+    anonymous: Debes iniciar sesión para ver esta sección
+    description: Panel donde el usuario gestiona su cuenta (saldos, mensajes, historicos)
+    title: Sección de Clientes
+    welcome: "Bienvenid@, %{name}"
   devise:
     failure:
       already_authenticated: Ya ha sido identificado.
@@ -72,6 +65,18 @@ es:
       signed_in: Ha iniciado sesión satisfactoriamente.
       signed_out: Ha cerrado la sesión satisfactoriamente.
       already_signed_out: Ha cerrado la sesión satisfactoriamente.
+
+  errors:
+    messages:
+      already_confirmed: ya ha sido confirmado, por favor intente iniciar sesión.
+      confirmation_period_expired: "necesita ser confirmado en %{period}, por favor vuelva a solicitarla."
+      expired: ha expirado, por favor vuelva a solicitarla.
+      errors: errores
+      not_found: no se ha encontrado.
+      not_locked: no estaba bloqueado.
+      not_saved:
+        one: "1 error impidió que este %{resource} fuese guardado:"
+        other: "%{count} errores impidieron que este %{resource} fuese guardado:"
 
   footer:
     msg: "© %{year}, desarrollado por Junior Aguilar"

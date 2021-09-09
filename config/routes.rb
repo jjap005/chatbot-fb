@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     get "indicator/:indicator" => 'welcome#indicator', as: :indicator
     root to: "welcome#index"
 
+    scope '/customers', controller: "customers" do
+      get "/" => "customers#index", as: :customers
+    end
     namespace :api do
       namespace :v1 do
         get "indicator/:indicator" => 'mindicadors#indicator', as: :api_indicator
