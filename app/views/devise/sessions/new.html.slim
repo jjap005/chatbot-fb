@@ -1,0 +1,21 @@
+- @title = t('users.login.title')
+.container.col-md-6
+  h1.text-center = @title
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    - if devise_error_messages! != ""
+      div class="alert alert-danger alert-dismissible" role="alert"
+        strong
+          = devise_error_messages!
+
+    .form-group.col-xs-12
+      = f.label :email, "#{t('users.email.label')}:"
+      = f.email_field :email, autofocus: true, :required => '', class: 'form-control', type: 'text', placeholder: t('users.email.placeholder')
+
+    .form-group.col-xs-12
+      = f.label :password, "#{t('users.password.label')}:"
+      = f.password_field :password, autocomplete: "off", :required => '', class: 'form-control', type: 'password', placeholder: t('users.password.placeholder')
+
+    .form-group.my-3.d-grid.gap-2
+      = f.submit @title, class: 'btn btn-primary btn-personalized btn-block'
+
+      = render "devise/shared/links"

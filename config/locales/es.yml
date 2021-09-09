@@ -1,9 +1,82 @@
 es:
+  activerecord:
+    errors:
+      messages:
+        inclusion: no está incluido en la lista
+        exclusion: está reservado
+        errors: errores
+        invalid: no es válido
+        confirmation: no coincide con la confirmación
+        accepted: debe ser aceptado
+        empty: no puede estar vacío
+        blank: no puede estar en blanco
+        too_long: "es demasiado largo (%{count} caracteres máximo)"
+        too_short: "es demasiado corto (%{count} caracteres mínimo)"
+        wrong_length: "no tiene la longitud correcta (%{count} caracteres exactos)"
+        not_a_number: no es un número
+        not_an_integer: no es un entero
+        greater_than: "debe ser mayor que %{count}"
+        greater_than_or_equal_to: "debe ser mayor que o igual a %{count}"
+        equal_to: "debe ser igual a %{count}"
+        less_than: "debe ser menor que %{count}"
+        less_than_or_equal_to: "debe ser menor que o igual a %{count}"
+        record_invalid: 'La validación falló: %{errors}'
+        before: "debe ser anterior a %{restriction}"
+        on_or_before: "debe ser anterior o igual a %{restriction}"
+        after: "debe ser posterior a %{restriction}"
+        on_or_after: "debe ser posterior o igual a %{restriction}"
+        between: "debe estar entre %{earliest} y %{latest}"
+        taken: 'ya está en uso'
+        template:
+          header:
+            one: 'No se pudo guardar porque se encontró 1 error'
+            other: 'No se pudo guardar porque se encontraron %{count} errores'
+            # The variable :count is also available
+          body: 'Se encontraron problemas con los siguientes campos:'
+    attributes:
+      user:
+        email: Correo Electrónico
+        name: Nombre
+        password: Contraseña
+        password_confirmation: Contraseña
+
   app:
     description: Aplicación para prueba técnica, donde utilizaremos ChatBot, manejo de clientes (usuarios), inicios de sesion y consultas a api externa para obtener datos de indicadores economicos
     home: Inicio
     name: ChatBot App
     title: "%{title} | ChatBot App"
+
+  customers:
+    anonymous: Debes iniciar sesión para ver esta sección
+    description: Panel donde el usuario gestiona su cuenta (saldos, mensajes, historicos)
+    title: Sección de Clientes
+    welcome: "Bienvenid@, %{name}"
+  devise:
+    failure:
+      already_authenticated: Ya ha sido identificado.
+      inactive: su cuenta aún no ha sido activada.
+      invalid: "%{authentication_keys} o contraseña inválidos."
+      locked: Su cuenta ha sido bloqueada.
+      not_found_in_database: Correo o contraseña inválidos.
+      timeout: su sesión ha expirado, por favor identifíquese de nuevo para continuar.
+      unauthenticated: Necesita iniciar sesión o registrarse para continuar.
+      unconfirmed: Debe confirmar su cuenta para continuar.
+    sessions:
+      signed_in: Ha iniciado sesión satisfactoriamente.
+      signed_out: Ha cerrado la sesión satisfactoriamente.
+      already_signed_out: Ha cerrado la sesión satisfactoriamente.
+
+  errors:
+    messages:
+      already_confirmed: ya ha sido confirmado, por favor intente iniciar sesión.
+      confirmation_period_expired: "necesita ser confirmado en %{period}, por favor vuelva a solicitarla."
+      expired: ha expirado, por favor vuelva a solicitarla.
+      errors: errores
+      not_found: no se ha encontrado.
+      not_locked: no estaba bloqueado.
+      not_saved:
+        one: "1 error impidió que este %{resource} fuese guardado:"
+        other: "%{count} errores impidieron que este %{resource} fuese guardado:"
 
   footer:
     msg: "© %{year}, desarrollado por Junior Aguilar"
@@ -25,3 +98,33 @@ es:
     chatbot: Area de ChatBot
     user: Area clientes
     kpis: Indicadores Economicos
+
+  users:
+    email:
+      label: Correo Electrónico
+      placeholder: example@mail.com
+    password:
+      label: Contraseña
+      placeholder: "************"
+    password_confirmation:
+      label: Confirmar Contraseña
+      placeholder: "************"
+    login:
+      title: Iniciar Sesión
+    sing_up:
+      title: Registrarse
+      update: Actualizar datos
+    name:
+      label: Nombres
+      placeholder: Nombres
+    dni:
+      label: Documento de Identidad
+      placeholder: DNI, Pasaporte, RUT
+    phone:
+      label: Telefono
+      placeholder: 999-999-9999
+    address:
+      label: Dirección
+      placeholder: Dirección de Domicilio o Fiscal
+    profile: Mi Perfil
+    logout: Cerrar Sesión

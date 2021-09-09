@@ -1,0 +1,22 @@
+h1.fw-light =t('customers.title')
+p.my-5.lead.text-muted =t('customers.description')
+
+.col-xs-12
+  - if current_user
+    h2.text-center =t('customers.welcome', name: current_user.name)
+
+    .container.my-2
+      .row.my-5
+        section.col.border
+          h3.text-center Area ChatBot
+          div
+            p seccion del chatBot
+        section.col.border
+          h3.text-center Instrucciónes de Uso
+          div
+            p Leyenda
+
+
+  - else
+    h2.text-center =t('customers.anonymous')
+    h3 = link_to t('users.login.title'), new_session_path('user')
