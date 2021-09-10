@@ -11,9 +11,9 @@ class Api::V1::FoundsController < ApplicationController
     found.user_id = current_user.id
 
     if found.save
-      render :json => [error: false, msg: 'Registro guardado con exito']
+      render :json => {error: false, msg: 'Registro guardado con exito'}
     else
-      render :json => [error: true, msg: 'No fue posible guardar el registro']
+      render :json => {error: true, msg: "No fue posible guardar el registro #{found.errors.full_messages}"}
     end
 
   end
@@ -24,12 +24,12 @@ class Api::V1::FoundsController < ApplicationController
     found_number = founds.where(:receipt_number => params[:search]).limit(1)
 
     if found_date.empty? && found_number.empty?
-      render :json => [error: true, msg: 'Registro no encontrado']
+      render :json => {error: true, msg: 'Registro no encontrado'}
     else
       if found_date.any?
-        render :json => [error: false, msg: "Registro encontrado, el saldo consultado es #{found_date[0].amount}, de fecha #{found_date[0].date_receipt.strftime('%d/%m/%Y')}"]
+        render :json => {error: false, msg: "Registro encontrado, el saldo consultado es #{found_date[0].amount}, de fecha #{found_date[0].date_receipt.strftime('%d/%m/%Y')}"}
       else
-        render :json => [error: false, msg: "Registro encontrado, el saldo consultado es #{found_number[0].amount} de fecha #{found_number[0].date_receipt.strftime('%d/%m/%Y')}"]
+        render :json => {error: false, msg: "Registro encontrado, el saldo consultado es #{found_number[0].amount} de fecha #{found_number[0].date_receipt.strftime('%d/%m/%Y')}"}
       end
     end
   end

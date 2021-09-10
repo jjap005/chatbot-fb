@@ -39,6 +39,9 @@ es:
         name: Nombre
         password: Contraseña
         password_confirmation: Contraseña
+      found:
+        receipt_number: Número de depósito
+        amount: monto
 
   app:
     description: Aplicación para prueba técnica, donde utilizaremos ChatBot, manejo de clientes (usuarios), inicios de sesion y consultas a api externa para obtener datos de indicadores economicos
