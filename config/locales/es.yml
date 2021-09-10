@@ -51,6 +51,9 @@ es:
     description: Panel donde el usuario gestiona su cuenta (saldos, mensajes, historicos)
     title: Sección de Clientes
     welcome: "Bienvenid@, %{name}"
+    chatbot:
+      title: Area de ChatBot
+      send: Enviar
   devise:
     failure:
       already_authenticated: Ya ha sido identificado.
