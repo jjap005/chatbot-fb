@@ -31,4 +31,4 @@ postgresql como motor de base de datos
   * Html
   * Javascript
   * Postgresql
-  * Css
+  * Cssgi
