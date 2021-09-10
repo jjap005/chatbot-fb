@@ -10,16 +10,16 @@ p.my-5.lead.text-muted =t('indicator.request', indicator: params[:indicator])
       p #{t('indicators.api.autor_html')}:
       p #{@indicator['autor']}
 
-  ul
-    li.my-2 = @indicator['nombre']
-    li.my-2 = @indicator['codigo']
-    li.my-2
+  ul.list-group
+    li.list-group-item.my-2 = @indicator['nombre']
+    li.list-group-item.my-2 = @indicator['codigo']
+    li.list-group-item.my-2
       | Ultimos 5 Registros:
       br
       span valores expresados en #{@indicator['unidad_medida']}
-      ul
+      ul.list-group-flush
         - (1..5).each do |value|
-          li.my-1 #{@indicator['serie'][value]['fecha'].split('.')[0]} =  #{@indicator['serie'][value]['valor']}
+          li.list-group-item.my-1 #{@indicator['serie'][value]['fecha'].split('.')[0]} =  #{@indicator['serie'][value]['valor']}
 
 - else
   .container.d-flex.flex-wrap.justify-content-between

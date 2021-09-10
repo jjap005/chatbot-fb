@@ -12,7 +12,7 @@ p.my-5.lead.text-muted =t('indicators.description')
     p #{t('indicators.api.date_html')}:
     p #{@indicators['fecha'].split('.')[0]}
 
-.container.d-flex.flex-wrap.justify-content-between
+.container.d-flex.flex-wrap
   table.table.table-stripe
     thead
       th #{t('indicators.table.name')}
@@ -24,5 +24,5 @@ p.my-5.lead.text-muted =t('indicators.description')
         tr
           td #{@indicators[indicator]['nombre']}
           td
-            a href="#{indicator_path(@indicators[indicator]['codigo'])}"  #{@indicators[indicator]['codigo']}
+            a href="#{indicator_path(indicator: @indicators[indicator]['codigo'])}"  #{@indicators[indicator]['codigo']}
           td #{@indicators[indicator]['valor']}
