@@ -16,9 +16,10 @@ ActiveRecord::Schema.define(version: 2021_09_10_092815) do
   enable_extension "plpgsql"
 
   create_table "founds", force: :cascade do |t|
-    t.datetime "date_receipt"
+    t.date "date"
     t.float "amount"
-    t.string "receipt_number"
+    t.string "number"
+    t.string "rut"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

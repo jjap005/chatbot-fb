@@ -41,6 +41,11 @@ $(document).on('turbolinks:load', function () {
       return false
     }
 
+    if (answer_user == "") {
+      $('#messages').append("<p class='message_bot'>Ingrese una opción </p> ")
+      return false
+    }
+
     switch (action) {
       case 0:
         messages_bot(parseInt(answer_user))
@@ -83,11 +88,12 @@ $(document).on('turbolinks:load', function () {
         break
       case 11:  //add founds
         message = "<p class='message_bot'> Ingrese separado por guion los siguientes datos </p> "
-        message += "<p class='message_bot'> Fecha (dd/mm/yyyy) - Saldo a ingresar - numero de deposito </p>"
+        message += "<p class='message_bot'> Fecha (dd/mm/yyyy) - Saldo a ingresar - numero de deposito - RUT </p>"
         break
-      case 12: //search founds
-        message = "<p class='message_bot'> Consulte su deposito, ingrese el numero de deposito </p> "
-        message += "<p class='message_bot'> numero de deposito </p>"
+      case 12:
+        message = "<p class='message_bot'> Consulte sus depositos </p> "
+        message += "<p class='message_bot'> enviar RUT y fecha (dd/mm/yyyy) separados por guión </p>"
+        message += "<p class='message_bot'> numero RUT - fecha (dd/mm/yyyy) </p>"
         break
       case 3: //indicators
         message = "<p class='message_bot'>Actualmente puedes consultar los siguientes indicadores: </p> "
@@ -132,11 +138,12 @@ $(document).on('turbolinks:load', function () {
 
   ///////////////////Founds
   function search_found(answer_user) {
+    let data = answer_user.split("-")
 
     $.ajax({
       method: "post",
       url: "/api/v1/founds/search",
-      data: { search: answer_user },
+      data: { date: data[1].trim(), rut: data[0].trim() },
       dataType: "json",
     }).done(function (data) {
       let message = ""
@@ -159,7 +166,7 @@ $(document).on('turbolinks:load', function () {
     $.ajax({
       method: "post",
       url: "/api/v1/founds/add",
-      data: { date_receipt: data[0].trim(), amount: data[1].trim(), receipt_number: data[2].trim() },
+      data: { date: data[0].trim(), amount: data[1].trim(), number: data[2].trim(), rut: data[3].trim() },
       dataType: "json",
     }).done(function (data) {
       let message = ""
