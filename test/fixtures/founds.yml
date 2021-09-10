@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_found: 2021-09-10 05:28:15
+  amount: MyString
+  number_found: MyString
+  user: one
+
+two:
+  date_found: 2021-09-10 05:28:15
+  amount: MyString
+  number_found: MyString
+  user: two

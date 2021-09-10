@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     namespace :api do
       namespace :v1 do
         get "indicator/:indicator" => 'mindicadors#indicator', as: :api_indicator
+
+        post "founds/add" => 'founds#add_found', as: :api_found_add
+        post "founds/search" => 'founds#search_found', as: :api_found_search
       end
     end
   end
