@@ -99,27 +99,6 @@ $(document).on('turbolinks:load', function () {
   }
 
 
-  function indicators(param) {
-    $.ajax({
-      method: "get",
-      url: "/api/v1/indicator/" + param,
-      data: { format: 'json' },
-      dataType: "json",
-    }).done(function (data) {
-      let message = ""
-      if (data[0]['error']) {
-        message = "<p class='message_bot'>" + data[0]['msg'] + "</p> "
-      }
-      else {
-        message = "<p class='message_bot'>" + data[0]['msg'][0]['name'] + " " + data[0]['msg'][0]['value'] + " " + data[0]['msg'][0]['units'] + "</p> "
-
-      }
-      message += "<p class='message_bot'>Escriba 0 para volver al menu anterior o puede seguir consultando otros indicadores </p> "
-      $('#messages').append(message)
-    });
-
-  }
-
   function messages_bot(action) {
 
     let message = ""
@@ -150,7 +129,7 @@ $(document).on('turbolinks:load', function () {
       $('#message').data('action', 12)
     }
 
-    if (action == 3) {
+    if (action == 3) { //indicators
       message = "<p class='message_bot'>Actualmente puedes consultar los siguientes indicadores: </p> "
       message += "<p class='message_bot'> 1.- Unidad de Fomento (uf) <br/> 2.- Dolar (dolar)  <br/> Unidad Tributaria Mensual (utm) </p>"
       message += "<p class='message_bot'> envie la abreviatura del indicador que desea consultar (uf, dolar, utm) </p>"
@@ -159,5 +138,34 @@ $(document).on('turbolinks:load', function () {
 
     $('#messages').append(message)
   }
+
+
+
+  ///////////////////Indicators
+
+  function indicators(param) {
+    $.ajax({
+      method: "get",
+      url: "/api/v1/indicator/" + param,
+      data: { format: 'json' },
+      dataType: "json",
+    }).done(function (data) {
+      let message = ""
+      if (data.error) {
+        message = "<p class='message_bot'>" + data.msg + "</p> "
+      }
+      else {
+        message = "<p class='message_bot'>" + data.msg.name + " " + data.msg.value + " " + data.msg.units + "</p> "
+
+      }
+      message += "<p class='message_bot'>Escriba 0 para volver al menu anterior o puede seguir consultando otros indicadores </p> "
+      $('#messages').append(message)
+    });
+
+  }
+
+
+
+
 
 })
