@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :founds
+
   validates :name, presence: true
   validates :dni, presence: true, uniqueness: true
 end

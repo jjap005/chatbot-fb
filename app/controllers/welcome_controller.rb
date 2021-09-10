@@ -1,3 +1,6 @@
+
+INDICATORS = %w[uf ivp dolar dolar_intercambio euro ipc utm imacec tpm libra_cobre tasa_desempleo bitcoin].freeze
+
 class WelcomeController < ApplicationController
 
   def index
@@ -6,18 +9,9 @@ class WelcomeController < ApplicationController
 
   def indicator
     @title = t('indicators.title')
-
-    indicators = %w[uf ivp dolar dolar_intercambio euro ipc utm imacec tpm libra_cobre tasa_desempleo bitcoin]
-
-    if indicators.include? params[:indicator]
-      begin
-        @indicator = JSON.parse(External::Mindicador.call(params[:indicator]))
-      rescue
-        @indicator = []
-      end
-    else
-      @indicator = []
-    end
+    @indicator = INDICATORS.include? params[:indicator] ? JSON.parse(External::Mindicador.call(params[:indicator])) : []
+  rescue
+    @indicator = []
   end
 
   def indicators

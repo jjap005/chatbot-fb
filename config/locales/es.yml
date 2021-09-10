@@ -99,6 +99,7 @@ es:
   indicator:
     no_exist: el indicador solicitado no se encuentra disponible o no existe
     request: "Se ha solicitado la consulta del indicador: %{indicator}"
+    error_present: Ha ocurrido un error, intente de nuevo
 
   indicators:
     api:

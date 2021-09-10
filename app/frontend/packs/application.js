@@ -60,6 +60,7 @@ $(document).on('turbolinks:load', function () {
       default:
         messages_bot(parseInt(answer_user))
     }
+
   }
 
   ///Print messages
@@ -102,6 +103,7 @@ $(document).on('turbolinks:load', function () {
 
     $('#message').data('action', action)
     $('#messages').append(message)
+    auto_scroll()
   }
 
   ///////////////////Indicators
@@ -123,6 +125,7 @@ $(document).on('turbolinks:load', function () {
       }
       message += "<p class='message_bot'>Escriba 0 para volver al menu anterior o puede seguir consultando otros indicadores </p> "
       $('#messages').append(message)
+
     });
 
   }
@@ -146,6 +149,7 @@ $(document).on('turbolinks:load', function () {
       }
       message += "<p class='message_bot'>Escriba 0 para volver al menu principal o puede seguir consultando saldo </p> "
       $('#messages').append(message)
+      auto_scroll()
     });
   }
 
@@ -167,7 +171,10 @@ $(document).on('turbolinks:load', function () {
       }
       message += "<p class='message_bot'>Escriba 0 para volver al menu principal o puede seguir agregando saldo </p> "
       $('#messages').append(message)
-    });
+    }).done(auto_scroll)
   }
 
+  function auto_scroll() {
+    $('#messages').scrollTop = $('#messages').scrollHeight;
+  }
 })
