@@ -6,7 +6,7 @@ class Api::V1::MindicadorsController < ApplicationController
 
     data = External::Mindicador.call(params[:indicator])
     render json: { error: false, msg: data }
-  rescue
+  rescue StandardError
     render json: { error: true, msg: t('indicator.error_present') }
   end
 end

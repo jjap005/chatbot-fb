@@ -4,5 +4,4 @@ class CustomersController < ApplicationController
   def index
     @title = t('customers.title')
   end
-
 end

@@ -14,26 +14,19 @@ class Api::V1::FoundsController < ApplicationController
   def search_found
     result = data_records(params[:rut], params[:date])
 
-    return render json: { error: true, msg: 'Registro no encontrado para los parametros indicados' } if result == 0
+    return render json: { error: true, msg: 'Registro no encontrado para los parametros indicados' } if result.zero?
 
-    render json: { error: false, msg: "El saldo que se posee para los parametros consultados es: #{result} "}
-
+    render json: { error: false, msg: "El saldo que se posee para los parametros consultados es: #{result}" }
   end
 
   private
+
   def founds_params
-    params.permit(:date, :amount, :number, :rut )
+    params.permit(:date, :amount, :number, :rut)
   end
 
   def data_records(rut, date)
-    rows = Found.where(rut: rut, date: date)
-    amount = 0
-
-    rows.each do |found|
-      amount += found.amount
-    end
-
-    amount
+    founds = Found.where(rut: rut, date: date)
+    founds.sum(:amount)
   end
-
 end

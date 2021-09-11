@@ -9,12 +9,12 @@ class Found < ApplicationRecord
   validate :valid_date?
 
   def valid_date?
-    if self.date_before_type_cast
-      begin
-        Date.parse(self.date_before_type_cast)
-      rescue
-        self.errors.add(:date, "Formato de fecha no valido")
-      end
+    unless date_before_type_cast
+      errors.add(:date, 'Formato de fecha no valido')
+
+      return false
     end
+
+    Date.parse(date_before_type_cast)
   end
 end

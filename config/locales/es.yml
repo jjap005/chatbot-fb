@@ -44,6 +44,10 @@ es:
         amount: monto
         rut: RUT
         date: Fecha
+      request_paper:
+        count: Cantidad de rollos de papel
+        rut: RUT
+        address: Dirección
 
   app:
     description: Aplicación para prueba técnica, donde utilizaremos ChatBot, manejo de clientes (usuarios), inicios de sesion y consultas a api externa para obtener datos de indicadores economicos

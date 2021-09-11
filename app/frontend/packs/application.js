@@ -59,6 +59,12 @@ $(document).on('turbolinks:load', function () {
       case 12:
         search_found(answer_user)
         break
+      case 2:
+        messages_bot(parseInt(answer_user))
+        break
+      case 21:
+        request_paper(answer_user)
+        break
       case 3:
         indicators(answer_user)
         break
@@ -95,6 +101,12 @@ $(document).on('turbolinks:load', function () {
         message += "<p class='message_bot'> enviar RUT y fecha (dd/mm/yyyy) separados por guión </p>"
         message += "<p class='message_bot'> numero RUT - fecha (dd/mm/yyyy) </p>"
         break
+      case 2:
+        message = "<p class='message_bot'> Solicite rollos de papel </p> "
+        message += "<p class='message_bot'> enviar RUT, cantidad y dirección de envio separados por guión </p>"
+        message += "<p class='message_bot'> numero RUT - cantidad - dirección </p>"
+        action = 21
+        break
       case 3: //indicators
         message = "<p class='message_bot'>Actualmente puedes consultar los siguientes indicadores: </p> "
         message += "<p class='message_bot'> 1.- Unidad de Fomento (uf) <br/> 2.- Dolar (dolar)  <br/> Unidad Tributaria Mensual (utm) </p>"
@@ -110,6 +122,34 @@ $(document).on('turbolinks:load', function () {
     $('#message').data('action', action)
     $('#messages').append(message)
     auto_scroll()
+  }
+
+
+  ///////////////////Request Paper
+  function request_paper(answer_user) {
+    let data = answer_user.split("-")
+
+    $.ajax({
+      method: "post",
+      url: "/api/v1/request-paper/add",
+      data: { rut: data[0].trim(), count: data[1].trim(), address: data[2].trim() },
+      dataType: "json",
+    }).done(function (data) {
+      let message = ""
+      if (data.error) {
+        message = "<p class='message_bot'>" + data.msg + "</p> "
+        message += "<p class='message_bot'>" + data.errors + "</p> "
+
+      }
+      else {
+        message = "<p class='message_bot'>" + data.msg + "</p> "
+
+      }
+      message += "<p class='message_bot'>Escriba 0 para volver al menu anterior o puede seguir consultando otros indicadores </p> "
+      $('#messages').append(message)
+
+    });
+
   }
 
   ///////////////////Indicators
@@ -133,7 +173,6 @@ $(document).on('turbolinks:load', function () {
       $('#messages').append(message)
 
     });
-
   }
 
   ///////////////////Founds
